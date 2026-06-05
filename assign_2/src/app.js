@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const noteRoutes = require("./routes/note.routes");
 
-dotenv.config();
+// dotenv.config();
 
 const app = express();
 

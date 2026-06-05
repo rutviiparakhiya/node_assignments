@@ -2,8 +2,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 const noteRoutes = require("./routes/note.routes");
 
-// Load env vars
-dotenv.config();
+// Remove dotenv.config() and move to root if needed
+// dotenv.config();
 
 const app = express();
 
