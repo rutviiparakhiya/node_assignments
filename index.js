@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const connectDB = require('./assign_1/src/config/db');
 
 // Load environment variables if any
 dotenv.config();
@@ -20,19 +21,24 @@ app.use('/assign_3', assign3);
 // Default route
 app.get('/', (req, res) => {
   res.send(`
-    <h1>Node Assignments</h1>
-    <ul>
-      <li><a href="/assign_1/api/notes">Assignment 1 (CRUD)</a></li>
-      <li><a href="/assign_2/api/notes">Assignment 2 (Advanced)</a></li>
-      <li><a href="/assign_3/api/notes">Assignment 3 (Search)</a></li>
-    </ul>
+    <html>
+      <head><title>Node Assignments</title></head>
+      <body>
+        <h1>Node Assignments Dashboard</h1>
+        <ul>
+          <li><a href="/assign_1/api/notes">Assignment 1 (CRUD) - /assign_1/api/notes</a></li>
+          <li><a href="/assign_2/api/notes">Assignment 2 (Advanced) - /assign_2/api/notes</a></li>
+          <li><a href="/assign_3/api/notes">Assignment 3 (Search) - /assign_3/api/notes</a></li>
+        </ul>
+        <p>Status: All systems operational</p>
+      </body>
+    </html>
   `);
 });
 
 const PORT = process.env.PORT || 10000;
 
-// Connect to DB
-const connectDB = require('./assign_1/src/config/db');
+// Connect to DB and Start Server
 connectDB().then(() => {
     app.listen(PORT, () => {
         console.log(`Master server running on port ${PORT}`);
